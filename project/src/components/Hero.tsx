@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a
-                href="/resume.pdf"
+                href="/Mohamed_Elrokapy_FrontEnd_Developer_CV.pdf"
                 download="Mohamed_Elrokapy_FrontEnd_Developer_CV.pdf"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-lg transition-colors">
                 <Download size={18} />
