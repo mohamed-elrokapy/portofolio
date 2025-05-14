@@ -1,198 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ExternalLink, Github, Code, Award, FolderGit2 } from "lucide-react";
+import { ExternalLink, Code, Award, FolderGit2 } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
-
-let w = {
-  id: 5,
-  title: "Weather App",
-  description:
-    "A weather forecast web application that fetches and displays real-time weather data for any location using an external API.",
-
-  image:
-    "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  technologies: ["html", "CSS", "JavaScript"],
-  github: "https://github.com/mohamed-elrokapy/weather-app",
-  live: "https://github.com/mohamed-elrokapy/weather-app",
-  featured: false,
-};
-
-// const projectsData = [
-//   {
-//     id: 1,
-//     title: "movie-series app",
-//     description:
-//       "A dynamic movie-series browsing application that allows users to explore trending films-series, view detailed information, and search using TheMovieDB API.",
-
-//     image:
-//       "https://images.pexels.com/photos/6177662/pexels-photo-6177662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["React js", "redux", "Tailwind CSS"],
-//     github: "https://github.com/mohamed-elrokapy/movieApp",
-//     live: "https://movie-app-one-wine-86.vercel.app/",
-//     featured: true,
-//   },
-
-//   {
-//     id: 2,
-//     title: "Portofolio",
-//     description:
-//       "A personal portfolio website showcasing my projects and skills as a front-end developer.",
-//     image:
-//       "https://images.pexels.com/photos/6177662/pexels-photo-6177662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["React", "TypeScript", "Tailwind CSS"],
-//     github: "https://github.com/mohamed-elrokapy/portofolio",
-//     live: "https://portofolio-xi-wine.vercel.app/",
-//     featured: true,
-//   },
-//   {
-//     id: 3,
-//     title: "E Commerce with dashboard",
-//     description:
-//       "A responsive e-commerce platform with a functional admin dashboard to manage products, featuring modern UI components and smooth user experience.",
-//     image:
-//       "https://images.pexels.com/photos/6177662/pexels-photo-6177662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["react js", "tailwind css", "context api"],
-//     github: "https://github.com/mohamed-elrokapy/e-commerceWithDashboard",
-//     live: "https://e-commerce-with-dashboard.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 4,
-//     title: "simple products panel ",
-//     description:
-//       "A lightweight interface to display and manage products, focusing on clean UI and reusable components.",
-//     image:
-//       "https://images.pexels.com/photos/7956230/pexels-photo-7956230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["react js", "talwind css"],
-//     github: "https://github.com/mohamed-elrokapy/e-commerceCard",
-//     live: "https://e-commerce-card-iq35.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 5,
-//     title: "Weather App",
-//     description:
-//       "A weather forecast web application that fetches and displays real-time weather data for any location using an external API.",
-
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/weather-app",
-//     live: "https://github.com/mohamed-elrokapy/weather-app",
-//     featured: false,
-//   },
-//   {
-//     id: 6,
-//     title: "simple timer",
-//     description:
-//       "A basic countdown timer with start, pause, and reset functionalities built using vanilla JavaScript.",
-
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/timer",
-//     live: "https://timer-orcin-two.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 7,
-//     title: "simpleSignin_RegisterPages",
-//     description:
-//       "A simple authentication interface with Sign In and Register pages, focusing on clean form validation and UI.",
-
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/simpleSignin_RegisterPages",
-//     live: "https://simple-countries-flages-k12l.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 8,
-//     title: "simpleCountriesFlages",
-//     description:
-//       "A minimalistic app displaying countries with their flags and basic details, perfect for practicing API data handling.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/simpleCountriesFlages",
-//     live: "https://simple-countries-flages.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 9,
-//     title: "simple counter",
-//     description:
-//       "A basic counter app with increment and decrement buttons, built for learning state management logic.",
-
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/simpleCounter",
-//     live: "https://simple-counter-delta-three.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 10,
-//     title: "simple clock",
-//     description:
-//       "A real-time analog/digital clock displaying the current time using vanilla JavaScript and DOM manipulation.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/simpleClock",
-//     live: "https://simple-clock-phi.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 11,
-//     title: "currency-converter",
-//     description:
-//       "A real-time currency converter tool using exchange rates API to convert values between major currencies.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/currency-converter",
-//     live: "https://calculator-gie2.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 12,
-//     title: "modern calculator",
-//     description:
-//       "A stylish calculator web app supporting basic arithmetic operations with a clean, responsive layout.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/calculator",
-//     live: "https://calculator-eait.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 13,
-//     title: "simple bg-color",
-//     description:
-//       "A fun tool that allows users to switch or randomize the background color of the page with each click.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/bgColor",
-//     live: "https://bg-color-1l17.vercel.app/",
-//     featured: false,
-//   },
-//   {
-//     id: 14,
-//     title: "100 memes",
-//     description:
-//       "A simple meme viewer that displays a collection of 100 random memes fetched from an API or dataset.",
-//     image:
-//       "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-//     technologies: ["html", "CSS", "JavaScript"],
-//     github: "https://github.com/mohamed-elrokapy/100memes",
-//     live: "https://100memes-elyp.vercel.app/",
-//     featured: false,
-//   },
-// ];
-
 const projectsData = [
   {
     id: 1,
@@ -206,14 +14,13 @@ const projectsData = [
     live: "https://movie-app-one-wine-86.vercel.app/",
     featured: true,
   },
-
   {
     id: 2,
     title: "Portofolio",
     description:
       "A personal portfolio website showcasing my projects and skills as a front-end developer.",
     image:
-      "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // مكتب وكود
+      "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/mohamed-elrokapy/portofolio",
     live: "https://portofolio-xi-wine.vercel.app/",
@@ -225,7 +32,7 @@ const projectsData = [
     title: "E Commerce with dashboard",
     description:
       "A responsive e-commerce platform with a functional admin dashboard to manage products, featuring modern UI components and smooth user experience.",
-    image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg", // داشبورد
+    image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
     technologies: ["react js", "tailwind css", "context api"],
     github: "https://github.com/mohamed-elrokapy/e-commerceWithDashboard",
     live: "https://e-commerce-with-dashboard.vercel.app/",
@@ -250,7 +57,7 @@ const projectsData = [
     title: "Weather App",
     description:
       "A weather forecast web application that fetches and displays real-time weather data for any location using an external API.",
-    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg", // طقس
+    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/weather-app",
     live: "https://github.com/mohamed-elrokapy/weather-app",
@@ -286,8 +93,7 @@ const projectsData = [
   {
     id: 8,
     title: "simpleCountriesFlages",
-    description:
-      "A minimalistic app displaying countries with their flags and basic details, perfect for practicing API data handling.",
+    description: "A minimalistic app displaying countries with their flags .",
     image:
       "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
     technologies: ["html", "CSS", "JavaScript"],
@@ -353,7 +159,7 @@ const projectsData = [
     title: "simple bg-color",
     description:
       "A fun tool that allows users to switch or randomize the background color of the page with each click.",
-    image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg", // خلفيات ألوان
+    image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/bgColor",
     live: "https://bg-color-1l17.vercel.app/",
@@ -483,7 +289,6 @@ const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1 px-3 py-2 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-300 text-sm font-medium rounded-md transition-colors">
-                      <Github size={16} />
                       <Code size={16} />
                     </a>
                   </div>
@@ -499,7 +304,6 @@ const Projects: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-medium rounded-lg transition-colors">
-            <Github size={18} />
             GitHub Profile
           </a>
         </div>
