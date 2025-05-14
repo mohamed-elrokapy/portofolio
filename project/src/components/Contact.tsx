@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                       href="tel:+201203363707" 
                       className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
                     >
-                      +20 120 336 3707
+                      +20 1208207545
                     </a>
                   </div>
                 </div>
