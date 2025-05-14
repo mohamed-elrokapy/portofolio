@@ -171,8 +171,7 @@ const projectsData = [
     title: "100 memes",
     description:
       "A simple meme viewer that displays a collection of 100 random memes fetched from an API or dataset.",
-    image:
-      "https://sdmntpritalynorth.oaiusercontent.com/files/00000000-b464-6246-955b-b0190488fafa/raw?se=2025-05-14T09%3A13%3A45Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=b928fb90-500a-412f-a661-1ece57a7c318&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-14T07%3A06%3A09Z&ske=2025-05-15T07%3A06%3A09Z&sks=b&skv=2024-08-04&sig=KGllpcQshlGtJ9bt%2BQ/1VpkKmNwWCQ0BNkfRB/LjuCw%3D",
+    image:"https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/100memes",
     live: "https://100memes-elyp.vercel.app/",
