@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
                 
                 <div className="flex gap-3">
                   <a 
-                    href="https://www.linkedin.com/in/mohamed-elsayed/"
+                    href="https://www.linkedin.com/in/mohamed-elrokapy/"
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-200 dark:bg-gray-600 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-full text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
@@ -239,7 +239,7 @@ const Contact: React.FC = () => {
                   </a>
                   
                   <a 
-                    href="https://github.com/mohamedrad"
+                    href="https://github.com/mohamed-elrokapy"
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-200 dark:bg-gray-600 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-full text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
