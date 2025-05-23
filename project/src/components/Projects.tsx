@@ -38,20 +38,6 @@ const projectsData = [
     live: "https://e-commerce-with-dashboard.vercel.app/",
     featured: false,
   },
-
-  {
-    id: 4,
-    title: "simple products panel ",
-    description:
-      "A lightweight interface to display and manage products, focusing on clean UI and reusable components.",
-    image:
-      "https://s3.amazonaws.com/utep-uploads/wp-content/uploads/online-regis-college/2023/05/31051125/product-managers-work-on-computer-500x333.jpg",
-    technologies: ["react js", "talwind css"],
-    github: "https://github.com/mohamed-elrokapy/e-commerceCard",
-    live: "https://e-commerce-card-iq35.vercel.app/",
-    featured: false,
-  },
-
   {
     id: 5,
     title: "Weather App",
@@ -63,7 +49,6 @@ const projectsData = [
     live: "https://github.com/mohamed-elrokapy/weather-app",
     featured: false,
   },
-
   {
     id: 6,
     title: "simple timer",
