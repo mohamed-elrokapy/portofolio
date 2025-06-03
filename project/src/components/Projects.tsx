@@ -18,7 +18,7 @@ const projectsData = [
     id: 2,
     title: "Portofolio",
     description:
-      "A personal portfolio website showcasing my projects and skills as a front-end developer.",
+      "A personal portfolio website that showcases my projects and technical skills as a front-end developer, demonstrating my expertise in building modern web applications.",
     image:
       "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
@@ -53,7 +53,8 @@ const projectsData = [
     id: 6,
     title: "simple timer",
     description:
-      "A basic countdown timer with start, pause, and reset functionalities built using vanilla JavaScript.",
+      " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities to help users manage time.",
+
     image:
       "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
     technologies: ["html", "CSS", "JavaScript"],
@@ -78,7 +79,8 @@ const projectsData = [
   {
     id: 8,
     title: "simpleCountriesFlages",
-    description: "A minimalistic app displaying countries with their flags .",
+    description:
+      "A minimalistic app that displays a list of countries along with their flags, offering users a clean and simple interface to explore .",
     image:
       "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
     technologies: ["html", "CSS", "JavaScript"],
@@ -156,7 +158,8 @@ const projectsData = [
     title: "100 memes",
     description:
       "A simple meme viewer that displays a collection of 100 random memes fetched from an API or dataset.",
-    image:"https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
+    image:
+      "https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/100memes",
     live: "https://100memes-elyp.vercel.app/",
