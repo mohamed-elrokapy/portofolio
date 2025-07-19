@@ -37,7 +37,7 @@ const About: React.FC = () => {
                       <span className="text-sm text-gray-500 dark:text-gray-400 block">
                         {translations.about.age}
                       </span>
-                      <span>30 {translations.about.years}</span>
+                      
                     </div>
                   </li>
                   
@@ -47,7 +47,7 @@ const About: React.FC = () => {
                       <span className="text-sm text-gray-500 dark:text-gray-400 block">
                         {translations.about.location}
                       </span>
-                      <span>Wardan Station, Giza, Egypt</span>
+                      <span> Giza, Egypt</span>
                     </div>
                   </li>
                   
