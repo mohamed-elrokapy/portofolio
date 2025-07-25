@@ -34,8 +34,8 @@ const projectsData = [
       "A responsive e-commerce platform with a functional admin dashboard to manage products, featuring modern UI components and smooth user experience.",
     image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
     technologies: ["react js", "tailwind css", "context api"],
-    github: "https://github.com/mohamed-elrokapy/e-commerceWithDashboard",
-    live: "https://e-commerce-with-dashboard.vercel.app/",
+    github: "https://github.com/mohamed-elrokapy/e-commerce-with-dashboard",
+    live: "https://e-commerce-with-dashboard-neon.vercel.app/",
     featured: false,
   },
   {
