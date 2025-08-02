@@ -6,7 +6,7 @@ const projectsData = [
     id: 0,
     title: "sustainablilty summit",
     description:
-      " a landing page to attend events asocieted with the nature ",
+      " A landing page to attend events associated with nature, featuring eco-friendly design, responsive layout, event details, registration form, and interactive location maps.",
     image:
       "https://scontent.fcai19-7.fna.fbcdn.net/v/t39.30808-6/488083317_617510071289497_876409715032607231_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=aa7b47&_nc_ohc=EZBXPnDMXvsQ7kNvwFlvT0N&_nc_oc=AdnrlOetcvGQFQJRv0JRjmyrT7mNdqjgm0rkI4UCy452kSpHVfHvs-yu-eQyReL-uUE&_nc_zt=23&_nc_ht=scontent.fcai19-7.fna&_nc_gid=MSMbrXn1PpeLaENFqqyl3Q&oh=00_AfROg0HHG4fwaZqv_whLI2JCUhARODYw1nE5UesjUgQxgw&oe=6893F43F", 
     technologies: [ "html","js","brevo", "Tailwind CSS"],
