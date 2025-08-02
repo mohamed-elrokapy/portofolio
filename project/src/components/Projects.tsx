@@ -54,7 +54,7 @@ const projectsData = [
     id: 5,
     title: "Weather App",
     description:
-      "A weather forecast web application that fetches and displays real-time weather data for any location using an external API.",
+      "A weather forecast web application that fetches and displays real-time weather data for any global location using an external weather API with a clean responsive user interface",
     image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/weather-app",
@@ -65,7 +65,7 @@ const projectsData = [
     id: 6,
     title: "simple timer",
     description:
-      " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities to help users manage time.",
+      " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities, with a clean interface to help users manage time effectively and stay focused.",
 
     image:
       "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
