@@ -16,7 +16,7 @@ const Skills: React.FC = () => {
         { name: "CSS3" },
         { name: "JavaScript" },
         { name: "React" },
-        { name: "Tailwind CSS" },
+        
         { name: "Next.js" },
       ],
     },
@@ -25,21 +25,30 @@ const Skills: React.FC = () => {
       icon: <Palette size={24} />,
       title: translations.skills.design,
       skills: [
-        { name: "Responsive Design" },
-        { name: "UI/UX Basics" },
-        { name: "CSS Animations" },
-      ],
+  { name: "Responsive Design" },
+  { name: "UI/UX Basics" },
+  { name: "CSS Animations" },
+  { name: "Tailwind CSS" },
+  { name: "Bootstrap" },
+  { name: "Framer Motion" },
+  { name: "Material Tailwind" },
+  { name: "ShadCN UI" }
+]
     },
     {
       id: "tools",
       icon: <GitBranch size={24} />,
       title: translations.skills.tools,
       skills: [
-        { name: "Git/GitHub" },
-        { name: "Postman" },
-        { name: "VS Code" },
-      ],
-    },
+  { name: "Git/GitHub" },
+  { name: "GitHub Actions" },
+  { name: "CI/CD Principles" },
+  { name: "Postman" },
+  { name: "VS Code" },
+  { name: "Jest" },
+  { name: "Redux Toolkit" },
+  { name: "React Testing Library" }
+]    },
   ];
 
   return (
