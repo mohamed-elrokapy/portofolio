@@ -10,7 +10,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  // Add smooth scrolling
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -32,7 +31,6 @@ function App() {
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function(e) {
-          // Clean up
         });
       });
     };
