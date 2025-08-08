@@ -48,7 +48,7 @@ const translations = {
       keySkills: 'Key Skills'
     },
     projects: {
-      title: 'Projects Portfolio',
+      title: 'Projects ',
       viewAll: 'View All',
       featured: 'Featured',
       technologies: 'Technologies Used',
