@@ -49,82 +49,82 @@ const projectsData = [
     live: "https://e-commerce-with-dashboard-neon.vercel.app/",
     featured: false,
   },
-  {
-    id: 5,
-    title: "Weather App",
-    description:
-      "A weather forecast web application that fetches and displays real-time weather data for any global location using an external weather API with a clean responsive user interface",
-    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/weather-app",
-    live: "https://weather-app-kohl-five-16.vercel.app/",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "simple timer",
-    description:
-      " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities, with a clean interface to help users manage time effectively and stay focused.",
+  // {
+  //   id: 5,
+  //   title: "Weather App",
+  //   description:
+  //     "A weather forecast web application that fetches and displays real-time weather data for any global location using an external weather API with a clean responsive user interface",
+  //   image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/weather-app",
+  //   live: "https://weather-app-kohl-five-16.vercel.app/",
+  //   featured: false,
+  // },
+  // {
+  //   id: 6,
+  //   title: "simple timer",
+  //   description:
+  //     " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities, with a clean interface to help users manage time effectively and stay focused.",
 
-    image:
-      "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/timer",
-    live: "https://timer-orcin-two.vercel.app/",
-    featured: false,
-  },
+  //   image:
+  //     "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/timer",
+  //   live: "https://timer-orcin-two.vercel.app/",
+  //   featured: false,
+  // },
 
-  {
-    id: 7,
-    title: "simpleSignin_RegisterPages",
-    description:
-      "A simple authentication interface with Sign In and Register pages, focusing on clean form validation and UI.",
-    image:
-      "https://raw.githubusercontent.com/phithounsavanh/Tailwind-Simple-Signup-Page/master/Readme/tailwind%20register.png",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/simpleSignin_RegisterPages",
-    live: "https://simple-countries-flages-k12l.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: 7,
+  //   title: "simpleSignin_RegisterPages",
+  //   description:
+  //     "A simple authentication interface with Sign In and Register pages, focusing on clean form validation and UI.",
+  //   image:
+  //     "https://raw.githubusercontent.com/phithounsavanh/Tailwind-Simple-Signup-Page/master/Readme/tailwind%20register.png",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/simpleSignin_RegisterPages",
+  //   live: "https://simple-countries-flages-k12l.vercel.app/",
+  //   featured: false,
+  // },
 
-  {
-    id: 8,
-    title: "simpleCountriesFlages",
-    description:
-      "A minimalistic app that displays a list of countries along with their flags, offering users a clean and simple interface to explore .",
-    image:
-      "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/simpleCountriesFlages",
-    live: "https://simple-countries-flages.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: 8,
+  //   title: "simpleCountriesFlages",
+  //   description:
+  //     "A minimalistic app that displays a list of countries along with their flags, offering users a clean and simple interface to explore .",
+  //   image:
+  //     "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/simpleCountriesFlages",
+  //   live: "https://simple-countries-flages.vercel.app/",
+  //   featured: false,
+  // },
 
-  {
-    id: 9,
-    title: "simple counter",
-    description:
-      "A basic counter app with increment and decrement buttons, built for learning state management logic.",
-    image:
-      "https://play-lh.googleusercontent.com/J4LOV4xhznSxJ1VTY6BcUdbOxq39czPfZB14DaGEtwdl_2cWxxAurWtr2yeaXlvi8WU",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/simpleCounter",
-    live: "https://simple-counter-delta-three.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: 9,
+  //   title: "simple counter",
+  //   description:
+  //     "A basic counter app with increment and decrement buttons, built for learning state management logic.",
+  //   image:
+  //     "https://play-lh.googleusercontent.com/J4LOV4xhznSxJ1VTY6BcUdbOxq39czPfZB14DaGEtwdl_2cWxxAurWtr2yeaXlvi8WU",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/simpleCounter",
+  //   live: "https://simple-counter-delta-three.vercel.app/",
+  //   featured: false,
+  // },
 
-  {
-    id: 10,
-    title: "simple clock",
-    description:
-      "A real-time analog/digital clock displaying the current time using vanilla JavaScript and DOM manipulation.",
-    image:
-      "https://www.seikoclocks.in/cdn/shop/files/Seiko-clocks-homepage_Mobile_New_1_x800.jpg?v=1692595903",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/simpleClock",
-    live: "https://simple-clock-phi.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: 10,
+  //   title: "simple clock",
+  //   description:
+  //     "A real-time analog/digital clock displaying the current time using vanilla JavaScript and DOM manipulation.",
+  //   image:
+  //     "https://www.seikoclocks.in/cdn/shop/files/Seiko-clocks-homepage_Mobile_New_1_x800.jpg?v=1692595903",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/simpleClock",
+  //   live: "https://simple-clock-phi.vercel.app/",
+  //   featured: false,
+  // },
 
   {
     id: 11,
@@ -152,17 +152,17 @@ const projectsData = [
     featured: false,
   },
 
-  {
-    id: 13,
-    title: "simple bg-color",
-    description:
-      "A fun tool that allows users to switch or randomize the background color of the page with each click.",
-    image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/bgColor",
-    live: "https://bg-color-1l17.vercel.app/",
-    featured: false,
-  },
+  // {
+  //   id: 13,
+  //   title: "simple bg-color",
+  //   description:
+  //     "A fun tool that allows users to switch or randomize the background color of the page with each click.",
+  //   image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg",
+  //   technologies: ["html", "CSS", "JavaScript"],
+  //   github: "https://github.com/mohamed-elrokapy/bgColor",
+  //   live: "https://bg-color-1l17.vercel.app/",
+  //   featured: false,
+  // },
 
   {
     id: 14,
