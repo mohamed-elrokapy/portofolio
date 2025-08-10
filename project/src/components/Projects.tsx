@@ -57,7 +57,7 @@ const projectsData = [
     image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/weather-app",
-    live: "https://github.com/mohamed-elrokapy/weather-app",
+    live: "https://weather-app-kohl-five-16.vercel.app/",
     featured: false,
   },
   {
