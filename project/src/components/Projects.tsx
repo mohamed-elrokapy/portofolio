@@ -4,7 +4,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 const projectsData = [
 {
     id: 5,
-    title: "realstate app",
+    title: "Real estate app",
     description:
 "An online real estate platform that lists, filters, and showcases properties for sale or rent worldwide, with interactive maps, secure inquiries, and a modern, responsive user interface.",    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
     image:"https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg",
