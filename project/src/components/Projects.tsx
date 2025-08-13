@@ -3,6 +3,16 @@ import { ExternalLink, Code, Award, FolderGit2 } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 const projectsData = [
 {
+    id: 5,
+    title: "realstate app",
+    description:
+"An online real estate platform that lists, filters, and showcases properties for sale or rent worldwide, with interactive maps, secure inquiries, and a modern, responsive user interface.",    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+    technologies: [ "TypeScript","React Js","Tailwind Css"],
+    live: "https://realstate-sable.vercel.app/",
+    featured: true,
+  },
+
+{
     id: 0,
     title: "green land event",
     description:
