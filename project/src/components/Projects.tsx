@@ -28,9 +28,9 @@ const projectsData = [
     id: 1,
     title: "movie-series app",
     description:
-      "A dynamic movie-series browsing application that allows users to explore trending films-series, view detailed information, and search using TheMovieDB API.",
-    image:
-      "https://images.pexels.com/photos/13710686/pexels-photo-13710686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // سينما
+"A modern, eco-themed landing page designed for attending nature-related events. It features a clean, responsive layout, detailed event information, an easy registration form, interactive location maps, and sustainable design aesthetics that highlight environmental awareness."
+  ,      image:
+      "https://images.pexels.com/photos/13710686/pexels-photo-13710686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
     technologies: ["React js", "redux", "Tailwind CSS"],
     github: "https://github.com/mohamed-elrokapy/movieApp",
     live: "https://movie-app-one-wine-86.vercel.app/",
@@ -40,8 +40,7 @@ const projectsData = [
     id: 2,
     title: "Portofolio",
     description:
-      "A personal portfolio website that showcases my projects and technical skills as a front-end developer, demonstrating my expertise in building modern web applications.",
-    image:
+"A personal portfolio website that highlights my front-end development skills and projects, demonstrating proficiency in creating responsive, visually appealing, and user-friendly web applications using modern technologies and best coding practices.",    image:
       "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/mohamed-elrokapy/portofolio",
@@ -141,8 +140,8 @@ const projectsData = [
     id: 11,
     title: "currency-converter",
     description:
-      "A real-time currency converter tool using exchange rates API to convert values between major currencies.",
-    image:
+"A real-time currency converter web application that utilizes a reliable exchange rates API to instantly convert values between major global currencies, featuring an intuitive user interface, responsive design, and accurate financial data updates."
+      ,    image:
       "https://cdn.britannica.com/87/191987-131-6D09155D/currency-exchange-rate-background-LED-display-board.jpg",
     technologies: ["html", "CSS", "JavaScript"],
     github: "https://github.com/mohamed-elrokapy/currency-converter",
