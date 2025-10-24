@@ -2,190 +2,283 @@ import React, { useState, useEffect } from "react";
 import { ExternalLink, Code, Award, FolderGit2 } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 const projectsData = [
+// {
+//     id: 5,
+//     title: "Real estate app",
+//     description:
+// "An online real estate platform that lists, filters, and showcases properties for sale or rent worldwide, with interactive maps, secure inquiries, and a modern, responsive user interface.",    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+//     image:"https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg",
+//     technologies: [ "TypeScript","React Js","Tailwind Css"],
+//     live: "https://realstate-sable.vercel.app/",
+//     featured: true,
+//   },
+
+// {
+//     id: 0,
+//     title: "green land event",
+//     description:
+//       " A landing page to attend events associated with nature, featuring eco-friendly design, responsive layout, event details, registration form, and interactive location maps.",
+//     image:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLTZXY_xAn-Pchf2Tve19eMiXF537lWJXraFJSzQyf_3PutOQbqVbzKhoiXjyCTldumZVfYRRy0j5jAhh_xhrOPw5DM_wXRp2zIjTY8O9SQ26iSNfmqTsguxLKXZqOSWLfJKcLG7sNwo/w400-h266-rw/232744b113523592.jpg",
+//     technologies: [ "html","js","brevo", "Tailwind CSS"],
+//     github: "https://github.com/mohamed-elrokapy/work101",
+//     live: "https://work101.vercel.app/",
+//     featured: true,
+//   },  
+// {
+//     id: 1,
+//     title: "movie-series app",
+//     description:
+// "A modern, eco-themed landing page designed for attending nature-related events. It features a clean, responsive layout, detailed event information, an easy registration form, interactive location maps, and sustainable design aesthetics that highlight environmental awareness."
+//   ,      image:
+//       "https://images.pexels.com/photos/13710686/pexels-photo-13710686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
+//     technologies: ["React js", "redux", "Tailwind CSS"],
+//     github: "https://github.com/mohamed-elrokapy/movieApp",
+//     live: "https://movie-app-one-wine-86.vercel.app/",
+//     featured: true,
+//   },
+//   {
+//     id: 2,
+//     title: "Portofolio",
+//     description:
+// "A personal portfolio website that highlights my front-end development skills and projects, demonstrating proficiency in creating responsive, visually appealing, and user-friendly web applications using modern technologies and best coding practices.",    image:
+//       "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//     technologies: ["React", "TypeScript", "Tailwind CSS"],
+//     github: "https://github.com/mohamed-elrokapy/portofolio",
+//     live: "https://portofolio-xi-wine.vercel.app/",
+//     featured: true,
+//   },
+
+//   {
+//     id: 3,
+//     title: "E Commerce with dashboard",
+//     description:
+//       "A responsive e-commerce platform with a functional admin dashboard to manage products, featuring modern UI components and smooth user experience.",
+//     image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
+//     technologies: ["react js", "tailwind css", "context api"],
+//     github: "https://github.com/mohamed-elrokapy/e-commerce-with-dashboard",
+//     live: "https://e-commerce-with-dashboard-neon.vercel.app/",
+//     featured: false,
+//   },
+//   // {
+//   //   id: 5,
+//   //   title: "Weather App",
+//   //   description:
+//   //     "A weather forecast web application that fetches and displays real-time weather data for any global location using an external weather API with a clean responsive user interface",
+//   //   image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/weather-app",
+//   //   live: "https://weather-app-kohl-five-16.vercel.app/",
+//   //   featured: false,
+//   // },
+//   // {
+//   //   id: 6,
+//   //   title: "simple timer",
+//   //   description:
+//   //     " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities, with a clean interface to help users manage time effectively and stay focused.",
+
+//   //   image:
+//   //     "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/timer",
+//   //   live: "https://timer-orcin-two.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   // {
+//   //   id: 7,
+//   //   title: "simpleSignin_RegisterPages",
+//   //   description:
+//   //     "A simple authentication interface with Sign In and Register pages, focusing on clean form validation and UI.",
+//   //   image:
+//   //     "https://raw.githubusercontent.com/phithounsavanh/Tailwind-Simple-Signup-Page/master/Readme/tailwind%20register.png",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/simpleSignin_RegisterPages",
+//   //   live: "https://simple-countries-flages-k12l.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   // {
+//   //   id: 8,
+//   //   title: "simpleCountriesFlages",
+//   //   description:
+//   //     "A minimalistic app that displays a list of countries along with their flags, offering users a clean and simple interface to explore .",
+//   //   image:
+//   //     "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/simpleCountriesFlages",
+//   //   live: "https://simple-countries-flages.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   // {
+//   //   id: 9,
+//   //   title: "simple counter",
+//   //   description:
+//   //     "A basic counter app with increment and decrement buttons, built for learning state management logic.",
+//   //   image:
+//   //     "https://play-lh.googleusercontent.com/J4LOV4xhznSxJ1VTY6BcUdbOxq39czPfZB14DaGEtwdl_2cWxxAurWtr2yeaXlvi8WU",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/simpleCounter",
+//   //   live: "https://simple-counter-delta-three.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   // {
+//   //   id: 10,
+//   //   title: "simple clock",
+//   //   description:
+//   //     "A real-time analog/digital clock displaying the current time using vanilla JavaScript and DOM manipulation.",
+//   //   image:
+//   //     "https://www.seikoclocks.in/cdn/shop/files/Seiko-clocks-homepage_Mobile_New_1_x800.jpg?v=1692595903",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/simpleClock",
+//   //   live: "https://simple-clock-phi.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   {
+//     id: 11,
+//     title: "currency-converter",
+//     description:
+// "A real-time currency converter web application that utilizes a reliable exchange rates API to instantly convert values between major global currencies, featuring an intuitive user interface, responsive design, and accurate financial data updates."
+//       ,    image:
+//       "https://cdn.britannica.com/87/191987-131-6D09155D/currency-exchange-rate-background-LED-display-board.jpg",
+//     technologies: ["html", "CSS", "JavaScript"],
+//     github: "https://github.com/mohamed-elrokapy/currency-converter",
+//     live: "https://calculator-gie2.vercel.app/",
+//     featured: false,
+//   },
+
+//   {
+//     id: 12,
+//     title: "modern calculator",
+//     description:
+//       "A stylish calculator web app supporting basic arithmetic operations with a clean, responsive layout.",
+//     image:
+//       "https://img.designideas.pics/wp-content/uploads/formidable/13/12-15.jpg?strip=all&lossy=1&webp=82&avif=82&ssl=1&fit=1082,1050",
+//     technologies: ["html", "CSS", "JavaScript"],
+//     github: "https://github.com/mohamed-elrokapy/calculator",
+//     live: "https://calculator-eait.vercel.app/",
+//     featured: false,
+//   },
+
+//   // {
+//   //   id: 13,
+//   //   title: "simple bg-color",
+//   //   description:
+//   //     "A fun tool that allows users to switch or randomize the background color of the page with each click.",
+//   //   image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg",
+//   //   technologies: ["html", "CSS", "JavaScript"],
+//   //   github: "https://github.com/mohamed-elrokapy/bgColor",
+//   //   live: "https://bg-color-1l17.vercel.app/",
+//   //   featured: false,
+//   // },
+
+//   {
+//     id: 14,
+//     title: "100 memes",
+//     description:
+//       "A simple meme viewer that displays a collection of 100 random memes fetched from an API or dataset.",
+//     image:
+//       "https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
+//     technologies: ["html", "CSS", "JavaScript"],
+//     github: "https://github.com/mohamed-elrokapy/100memes",
+//     live: "https://100memes-elyp.vercel.app/",
+//     featured: false,
+//   },
+    {
+  id: 0,
+  title: "green land event",
+  description:
+    "A creative, eco-friendly landing page designed to promote and manage nature-related events. It includes detailed event schedules, a registration form, and interactive maps, ensuring an engaging and sustainable user experience across all devices.",
+  image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLTZXY_xAn-Pchf2Tve19eMiXF537lWJXraFJSzQyf_3PutOQbqVbzKhoiXjyCTldumZVfYRRy0j5jAhh_xhrOPw5DM_wXRp2zIjTY8O9SQ26iSNfmqTsguxLKXZqOSWLfJKcLG7sNwo/w400-h266-rw/232744b113523592.jpg",
+  technologies: ["html", "js", "brevo", "Tailwind CSS"],
+  github: "https://github.com/mohamed-elrokapy/work101",
+  live: "https://work101.vercel.app/",
+  featured: true,
+},
 {
-    id: 5,
-    title: "Real estate app",
-    description:
-"An online real estate platform that lists, filters, and showcases properties for sale or rent worldwide, with interactive maps, secure inquiries, and a modern, responsive user interface.",    image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-    image:"https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg",
-    technologies: [ "TypeScript","React Js","Tailwind Css"],
-    live: "https://realstate-sable.vercel.app/",
-    featured: true,
-  },
-
+  id: 1,
+  title: "movie-series app",
+  description:
+    "A modern movie and series application that fetches real-time data from an API, displaying trending films, detailed descriptions, and trailers. It features advanced search, responsive design, Redux state management, and smooth user interaction across devices.",
+  image:
+    "https://images.pexels.com/photos/13710686/pexels-photo-13710686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  technologies: ["React js", "redux", "Tailwind CSS"],
+  github: "https://github.com/mohamed-elrokapy/movieApp",
+  live: "https://movie-app-one-wine-86.vercel.app/",
+  featured: true,
+},
 {
-    id: 0,
-    title: "green land event",
-    description:
-      " A landing page to attend events associated with nature, featuring eco-friendly design, responsive layout, event details, registration form, and interactive location maps.",
-    image:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLTZXY_xAn-Pchf2Tve19eMiXF537lWJXraFJSzQyf_3PutOQbqVbzKhoiXjyCTldumZVfYRRy0j5jAhh_xhrOPw5DM_wXRp2zIjTY8O9SQ26iSNfmqTsguxLKXZqOSWLfJKcLG7sNwo/w400-h266-rw/232744b113523592.jpg",
-    technologies: [ "html","js","brevo", "Tailwind CSS"],
-    github: "https://github.com/mohamed-elrokapy/work101",
-    live: "https://work101.vercel.app/",
-    featured: true,
-  },  
+  id: 2,
+  title: "Portofolio",
+  description:
+    "A professional portfolio website built to showcase my technical skills, personal information, and front-end projects. It focuses on responsive layouts, modern UI/UX design, and accessibility while demonstrating clean, maintainable, and high-performance React code.",
+  image:
+    "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  technologies: ["React", "TypeScript", "Tailwind CSS"],
+  github: "https://github.com/mohamed-elrokapy/portofolio",
+  live: "https://portofolio-xi-wine.vercel.app/",
+  featured: true,
+},
 {
-    id: 1,
-    title: "movie-series app",
-    description:
-"A modern, eco-themed landing page designed for attending nature-related events. It features a clean, responsive layout, detailed event information, an easy registration form, interactive location maps, and sustainable design aesthetics that highlight environmental awareness."
-  ,      image:
-      "https://images.pexels.com/photos/13710686/pexels-photo-13710686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
-    technologies: ["React js", "redux", "Tailwind CSS"],
-    github: "https://github.com/mohamed-elrokapy/movieApp",
-    live: "https://movie-app-one-wine-86.vercel.app/",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Portofolio",
-    description:
-"A personal portfolio website that highlights my front-end development skills and projects, demonstrating proficiency in creating responsive, visually appealing, and user-friendly web applications using modern technologies and best coding practices.",    image:
-      "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/mohamed-elrokapy/portofolio",
-    live: "https://portofolio-xi-wine.vercel.app/",
-    featured: true,
-  },
+  id: 3,
+  title: "E Commerce with dashboard",
+  description:
+    "A complete e-commerce platform integrated with an admin dashboard that enables managing products, categories, and orders efficiently. It features secure routing, responsive design, reusable UI components, and a seamless shopping experience for users.",
+  image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
+  technologies: ["react js", "tailwind css", "context api"],
+  github: "https://github.com/mohamed-elrokapy/e-commerce-with-dashboard",
+  live: "https://e-commerce-with-dashboard-neon.vercel.app/",
+  featured: false,
+},
+{
+  id: 5,
+  title: "Real estate app",
+  description:
+    "An advanced real estate web application that allows users to explore, filter, and compare global properties for sale or rent. It integrates interactive maps, secure messaging, and modern TypeScript-based architecture with an elegant, mobile-friendly design.",
+  image: "https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg",
+  technologies: ["TypeScript", "React Js", "Tailwind Css"],
+  live: "https://realstate-sable.vercel.app/",
+  featured: true,
+},
+{
+  id: 11,
+  title: "currency-converter",
+  description:
+    "A real-time currency converter web app that utilizes a live exchange rates API to convert values between major world currencies. It provides accurate data, responsive design, dark mode support, and instant calculation for seamless user experience.",
+  image:
+    "https://cdn.britannica.com/87/191987-131-6D09155D/currency-exchange-rate-background-LED-display-board.jpg",
+  technologies: ["html", "CSS", "JavaScript"],
+  github: "https://github.com/mohamed-elrokapy/currency-converter",
+  live: "https://calculator-gie2.vercel.app/",
+  featured: false,
+},
+{
+  id: 12,
+  title: "modern calculator",
+  description:
+    "A sleek, responsive calculator web application supporting essential arithmetic operations with keyboard input. It features a minimalistic design, smooth animations, and accurate calculations for both desktop and mobile users, built using clean JavaScript logic.",
+  image:
+    "https://img.designideas.pics/wp-content/uploads/formidable/13/12-15.jpg?strip=all&lossy=1&webp=82&avif=82&ssl=1&fit=1082,1050",
+  technologies: ["html", "CSS", "JavaScript"],
+  github: "https://github.com/mohamed-elrokapy/calculator",
+  live: "https://calculator-eait.vercel.app/",
+  featured: false,
+},
+{
+  id: 14,
+  title: "100 memes",
+  description:
+    "A fun and interactive meme viewer that dynamically displays 100 random memes fetched from a public API. It features fast loading, a clean grid layout, and an engaging, user-friendly interface for entertainment lovers across all devices.",
+  image:
+    "https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
+  technologies: ["html", "CSS", "JavaScript"],
+  github: "https://github.com/mohamed-elrokapy/100memes",
+  live: "https://100memes-elyp.vercel.app/",
+  featured: false,
+},
 
-  {
-    id: 3,
-    title: "E Commerce with dashboard",
-    description:
-      "A responsive e-commerce platform with a functional admin dashboard to manage products, featuring modern UI components and smooth user experience.",
-    image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
-    technologies: ["react js", "tailwind css", "context api"],
-    github: "https://github.com/mohamed-elrokapy/e-commerce-with-dashboard",
-    live: "https://e-commerce-with-dashboard-neon.vercel.app/",
-    featured: false,
-  },
-  // {
-  //   id: 5,
-  //   title: "Weather App",
-  //   description:
-  //     "A weather forecast web application that fetches and displays real-time weather data for any global location using an external weather API with a clean responsive user interface",
-  //   image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/weather-app",
-  //   live: "https://weather-app-kohl-five-16.vercel.app/",
-  //   featured: false,
-  // },
-  // {
-  //   id: 6,
-  //   title: "simple timer",
-  //   description:
-  //     " A basic countdown timer built using vanilla JavaScript, featuring start, pause, and reset functionalities, with a clean interface to help users manage time effectively and stay focused.",
-
-  //   image:
-  //     "https://www.udacity.com/blog/wp-content/uploads/2021/09/Timer_Blog-scaled.jpeg",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/timer",
-  //   live: "https://timer-orcin-two.vercel.app/",
-  //   featured: false,
-  // },
-
-  // {
-  //   id: 7,
-  //   title: "simpleSignin_RegisterPages",
-  //   description:
-  //     "A simple authentication interface with Sign In and Register pages, focusing on clean form validation and UI.",
-  //   image:
-  //     "https://raw.githubusercontent.com/phithounsavanh/Tailwind-Simple-Signup-Page/master/Readme/tailwind%20register.png",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/simpleSignin_RegisterPages",
-  //   live: "https://simple-countries-flages-k12l.vercel.app/",
-  //   featured: false,
-  // },
-
-  // {
-  //   id: 8,
-  //   title: "simpleCountriesFlages",
-  //   description:
-  //     "A minimalistic app that displays a list of countries along with their flags, offering users a clean and simple interface to explore .",
-  //   image:
-  //     "https://media.istockphoto.com/id/147996027/photo/egyptian-flag.jpg?s=612x612&w=0&k=20&c=2ehSeASNsEChfe0f0AfWrxz5Z_FuKMbaBysuGUUb_lY=",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/simpleCountriesFlages",
-  //   live: "https://simple-countries-flages.vercel.app/",
-  //   featured: false,
-  // },
-
-  // {
-  //   id: 9,
-  //   title: "simple counter",
-  //   description:
-  //     "A basic counter app with increment and decrement buttons, built for learning state management logic.",
-  //   image:
-  //     "https://play-lh.googleusercontent.com/J4LOV4xhznSxJ1VTY6BcUdbOxq39czPfZB14DaGEtwdl_2cWxxAurWtr2yeaXlvi8WU",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/simpleCounter",
-  //   live: "https://simple-counter-delta-three.vercel.app/",
-  //   featured: false,
-  // },
-
-  // {
-  //   id: 10,
-  //   title: "simple clock",
-  //   description:
-  //     "A real-time analog/digital clock displaying the current time using vanilla JavaScript and DOM manipulation.",
-  //   image:
-  //     "https://www.seikoclocks.in/cdn/shop/files/Seiko-clocks-homepage_Mobile_New_1_x800.jpg?v=1692595903",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/simpleClock",
-  //   live: "https://simple-clock-phi.vercel.app/",
-  //   featured: false,
-  // },
-
-  {
-    id: 11,
-    title: "currency-converter",
-    description:
-"A real-time currency converter web application that utilizes a reliable exchange rates API to instantly convert values between major global currencies, featuring an intuitive user interface, responsive design, and accurate financial data updates."
-      ,    image:
-      "https://cdn.britannica.com/87/191987-131-6D09155D/currency-exchange-rate-background-LED-display-board.jpg",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/currency-converter",
-    live: "https://calculator-gie2.vercel.app/",
-    featured: false,
-  },
-
-  {
-    id: 12,
-    title: "modern calculator",
-    description:
-      "A stylish calculator web app supporting basic arithmetic operations with a clean, responsive layout.",
-    image:
-      "https://img.designideas.pics/wp-content/uploads/formidable/13/12-15.jpg?strip=all&lossy=1&webp=82&avif=82&ssl=1&fit=1082,1050",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/calculator",
-    live: "https://calculator-eait.vercel.app/",
-    featured: false,
-  },
-
-  // {
-  //   id: 13,
-  //   title: "simple bg-color",
-  //   description:
-  //     "A fun tool that allows users to switch or randomize the background color of the page with each click.",
-  //   image: "https://images.pexels.com/photos/698513/pexels-photo-698513.jpeg",
-  //   technologies: ["html", "CSS", "JavaScript"],
-  //   github: "https://github.com/mohamed-elrokapy/bgColor",
-  //   live: "https://bg-color-1l17.vercel.app/",
-  //   featured: false,
-  // },
-
-  {
-    id: 14,
-    title: "100 memes",
-    description:
-      "A simple meme viewer that displays a collection of 100 random memes fetched from an API or dataset.",
-    image:
-      "https://play-lh.googleusercontent.com/jcbkTJ1CAmJ3eydoz0Fe3o9CKI3UmwxrkDRUKsCY-hiSkBPnUFNrhLRS3usYfuH-BPs=w240-h480-rw",
-    technologies: ["html", "CSS", "JavaScript"],
-    github: "https://github.com/mohamed-elrokapy/100memes",
-    live: "https://100memes-elyp.vercel.app/",
-    featured: false,
-  },
 ];
 
 const Projects: React.FC = () => {
