@@ -187,6 +187,18 @@ const projectsData = [
 //     featured: false,
 //   },
     {
+  id: 15,
+  title: "Medical Care Unit",
+  description:
+    "A comprehensive medical care web application designed to manage patient records, appointments, and doctor schedules efficiently. It features a clean dashboard, responsive design, real-time health data tracking, and secure authentication for both patients and administrators. Built with React and Tailwind CSS for a modern healthcare experience.",
+  image:
+    "https://images.pexels.com/photos/3957986/pexels-photo-3957986.jpeg?_gl=1*1thluus*_ga*MTY2OTM4ODA4Ni4xNzYxMzE0MTA4*_ga_8JE65Q40S6*czE3NjEzMTQxMDckbzEkZzEkdDE3NjEzMTQyMTAkajU5JGwwJGgw",
+  technologies: ["Next js", "TypeScript", "redux toolkit "],
+  github: "https://github.com/mohamed-elrokapy/medical_care",
+  live: "https://medical-care-eta.vercel.app/",
+  featured: true,
+},
+    {
   id: 0,
   title: "green land event",
   description:
