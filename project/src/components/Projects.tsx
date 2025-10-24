@@ -264,7 +264,7 @@ const Projects: React.FC = () => {
                   <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  <p className="text-gray-600 h-[180px] dark:text-gray-400 mb-4">
                     {project.description}
                   </p>
 
