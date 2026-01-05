@@ -221,28 +221,17 @@ const projectsData = [
   live: "https://movie-app-one-wine-86.vercel.app/",
   featured: true,
 },
-{
-  id: 2,
-  title: "Portofolio",
-  description:
-    "A professional portfolio website built to showcase my technical skills, personal information, and front-end projects. It focuses on responsive layouts, modern UI/UX design, and accessibility while demonstrating clean, maintainable, and high-performance React code.",
-  image:
-    "https://images.pexels.com/photos/5669630/pexels-photo-5669630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  technologies: ["React", "TypeScript", "Tailwind CSS"],
-  github: "https://github.com/mohamed-elrokapy/portofolio",
-  live: "https://portofolio-xi-wine.vercel.app/",
-  featured: true,
-},
+
 {
   id: 3,
-  title: "E Commerce with dashboard",
+  title: "E Commerce with  admin dashboard",
   description:
     "A complete e-commerce platform integrated with an admin dashboard that enables managing products, categories, and orders efficiently. It features secure routing, responsive design, reusable UI components, and a seamless shopping experience for users.",
   image: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg",
-  technologies: ["react js", "tailwind css", "context api"],
-  github: "https://github.com/mohamed-elrokapy/e-commerce-with-dashboard",
-  live: "https://e-commerce-with-dashboard-neon.vercel.app/",
-  featured: false,
+  technologies: ["react js", "tailwind css", "typeScrpit"],
+  github: "https://github.com/mohamed-elrokapy/balanza2",
+  live: "https://balanza2.vercel.app/",
+  featured: true,
 },
 {
   id: 5,
