@@ -1,8 +1,8 @@
 export const profile = {
   email: 'mohamedrad2022@gmail.com',
-  phone: '+20 120 336 3707',
-  phoneHref: 'tel:+201203363707',
-  whatsapp: 'https://wa.me/201203363707',
+  phone: '+20 127 038 0822',
+  phoneHref: 'tel:+201270380822',
+  whatsapp: 'https://wa.me/201270380822',
   github: 'https://github.com/mohamed-elrokapy',
   linkedin: 'https://linkedin.com/in/mohamed-elrokapy',
   cv: '/Mohammed_Elrokapy_FrontEnd_Developer_CV.pdf',
