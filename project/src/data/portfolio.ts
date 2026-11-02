@@ -5,7 +5,7 @@ export const profile = {
   whatsapp: 'https://wa.me/201270380822',
   github: 'https://github.com/mohamed-elrokapy',
   linkedin: 'https://linkedin.com/in/mohamed-elrokapy',
-  cv: '/Mohammed_Elrokapy_FrontEnd_Developer_CV.pdf',
+  cv: '/Mohamed_Abdelmohsen_Resume.pdf',
 };
 
 export const heroStack = [
