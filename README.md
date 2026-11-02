@@ -4,19 +4,25 @@ Personal portfolio of Mohamed Elsayed Abdelmohsen, a full-stack developer in Giz
 
 Live site: https://portofolio-xi-wine.vercel.app
 
-| Desktop, light | Mobile, dark, Arabic (RTL) |
+| Desktop, light | Projects section, desktop |
 | --- | --- |
-| ![Desktop light](docs/screenshots/desktop-light.png) | ![Mobile dark Arabic](docs/screenshots/mobile-dark-arabic-rtl.png) |
+| ![Desktop light](docs/screenshots/desktop-light.png) | ![Projects section](docs/screenshots/projects-desktop-light.png) |
+
+| A case study opened (keyboard toggle) | Mobile, dark, Arabic (RTL) |
+| --- | --- |
+| ![Case study open](docs/screenshots/case-study-open-desktop-light.png) | ![Mobile dark Arabic](docs/screenshots/mobile-dark-arabic-rtl.png) |
 
 ## Features
 
-- Single-page site: hero, about and experience, skills, projects, contact.
+- Single-page site: hero, about (with a "What I bring" block whose points link to evidence), projects, experience, skills, contact.
+- Projects are written as case studies: one-line problem, honest status of the live site, stack, the CI checks that run in the repository, links (live, source, CI runs) and a native `<details>` panel with what was built, what was verified and the limitations. Six case studies, eleven smaller projects, and three live demos whose source repositories are private (only their public live link is shown).
+- Screenshots are lazy-loaded WebP files with explicit width and height, under 55 KB each, in `project/public/projects/`.
 - English and Arabic, with the page direction switching to RTL. The choice is saved in `localStorage`.
 - Light and dark theme, saved in `localStorage`, applied before first paint to avoid a flash.
 - Keyboard friendly: visible focus rings, semantic landmarks, `aria-current` on the active nav item, Escape closes the mobile menu.
 - Respects `prefers-reduced-motion`.
 - Fonts (IBM Plex Sans, Mono and Sans Arabic) are self-hosted through `@fontsource`, no CDN.
-- All text lives in `project/src/i18n/translations.ts` and project/skill data in `project/src/data/portfolio.ts`, so content changes do not touch components.
+- All text lives in `project/src/i18n/translations.ts` and project, skill and link data in `project/src/data/portfolio.ts`, so content changes do not touch components. English and Arabic keys are typed to stay in sync.
 
 ## Stack
 
@@ -42,16 +48,17 @@ No environment variables are needed.
 
 ## Content notes
 
-- Project descriptions were rewritten to say only what could be confirmed from each repository (its dependencies, folders and README). Earlier claims that could not be confirmed, such as "secure authentication", "real-time health data tracking" and "interactive maps", were removed.
-- The old contact form only simulated sending and never delivered anything, so it was replaced by direct contact links.
-- Stock photos that had been used as project thumbnails were removed because they were not screenshots of the projects.
-- Experience entries come from the CV in `project/public/`, which is unchanged.
+- Experience, education and skills follow the owner's resume. No degree in computer science is claimed: the education line is a Bachelor of Law (ongoing) plus self-taught web development and ITI courses.
+- Case-study facts come from each repository's README on GitHub and from its GitHub Actions status (checked on 2 Nov 2026). Where a README says something could not be verified, the case study says so too. Examples: the Firebase mode of the Sufra shop was never run against a real Firebase project, the Foodaty store follows a tutorial and its purchase flows were not run, the movie app needs a TMDB token on the host and may show no data without it, and the DNS checker has no hosted demo because it needs a backend.
+- Screenshots of the DNS checker, the movie app and the shops were taken against demo DNS data, mock API responses or placeholder images (product photos did not load in the capture environment). The case studies say this.
+- Private repositories were inspected only to decide whether a public live site could be listed. Nothing from their source is copied here. Three live sites are listed with a one-line description taken from the code (stack, mock data, demo admin login). Others (a law-school demo with invented testimonials, a duplicate nutrition-store repository, business landing pages and course exercises) were left out on purpose.
+- Project descriptions earlier than this version were rewritten to say only what could be confirmed. The fake contact form was replaced by direct contact links, and stock photos used as thumbnails were removed.
 
 ## Verification and limitations
 
-Verified by running `npm run lint`, `npm run typecheck` and `npm run build` (all pass), and by driving the dev server with Playwright at 1280x800 and 390x844 in light, dark, English and Arabic (no console errors, no horizontal overflow, language and theme toggles and the mobile menu work, choices persist after reload).
+Verified by running `npm run lint`, `npm run typecheck` and `npm run build` (all pass), and by driving the dev server with Playwright at 1280x800 and 390x844 in light, dark, English and Arabic: no console errors or warnings, no horizontal overflow, no broken images, `dir` switches to RTL in Arabic, the case-study panels open with the keyboard, and language and theme toggles work.
 
-Not verified: the external project links (live demos and GitHub repositories) were not opened from the build environment, because outside network access was blocked. The e-commerce Strapi demo may depend on a separately hosted Strapi backend. The `dns-email-health-checker` project has no hosted demo, so it links only to its source. Automated tests were not added, since the site has no non-trivial logic.
+Not verified: the external project links (live demos and GitHub repositories) were not opened from the build environment, because outside network access was blocked, so the "live" status lines come from each repository's README. The test counts quoted in the DNS checker case study (97 tests, 90% coverage gate) are taken from its README and CI results, and I did not re-run them here. Arabic copy was written alongside the English and has not had a native-speaker review. Automated tests were not added, since the site has no non-trivial logic.
 
 ## Notes
 
