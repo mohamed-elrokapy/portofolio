@@ -25,7 +25,7 @@ const Contact = () => {
   return (
     <section id="contact" className="border-t border-line bg-surface/50">
       <div className="section">
-        <p className="eyebrow">04</p>
+        <p className="eyebrow">05</p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{t.contact.title}</h2>
         <p className="mt-4 text-xl font-medium">{t.contact.lead}</p>
         <p className="mt-2 max-w-2xl text-lg text-muted">{t.contact.sub}</p>

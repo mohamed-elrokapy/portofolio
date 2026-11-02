@@ -1,6 +1,6 @@
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/useLanguage';
-
-const jobOrder = ['flolabs', 'drcode', 'gooweb', 'freelance'] as const;
+import { strengths } from '../data/portfolio';
 
 const About = () => {
   const { translations: t } = useLanguage();
@@ -34,24 +34,37 @@ const About = () => {
           </dl>
         </div>
 
-        <h3 className="mt-16 text-xl font-semibold">{t.about.experience}</h3>
-        <ol className="mt-6 divide-y divide-line border-y border-line">
-          {jobOrder.map((key) => {
-            const job = t.about.jobs[key];
-            const period = key === 'flolabs' ? t.about.present : t.about.periods[key];
+        <h3 className="mt-16 text-xl font-semibold">{t.about.bringTitle}</h3>
+        <p className="mt-2 text-muted">{t.about.bringIntro}</p>
+        <ul className="mt-6 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
+          {strengths.map((strength) => {
+            const item = t.about.strengths[strength.key];
             return (
-              <li key={key} className="grid gap-2 py-6 md:grid-cols-[14rem_1fr] md:gap-10">
-                <p className="font-mono text-sm text-accent">{period}</p>
-                <div>
-                  <h4 className="font-semibold">
-                    {job.role} <span className="font-normal text-muted">| {job.place}</span>
-                  </h4>
-                  <p className="mt-2 max-w-2xl leading-relaxed text-muted">{job.desc}</p>
+              <li key={strength.key} className="flex flex-col bg-bg p-6">
+                <h4 className="font-semibold">{item.title}</h4>
+                <p className="mt-2 flex-1 leading-relaxed text-muted">{item.text}</p>
+                <div className="mt-4">
+                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">{t.about.evidence}</p>
+                  <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
+                    {strength.evidence.map((e) => (
+                      <li key={e.key}>
+                        <a
+                          href={e.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 rounded text-sm font-semibold text-accent underline-offset-4 hover:underline">
+                          {t.about.evidenceLinks[e.key as keyof typeof t.about.evidenceLinks]}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                          <span className="sr-only">({t.common.opensNewTab})</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </li>
             );
           })}
-        </ol>
+        </ul>
       </div>
     </section>
   );

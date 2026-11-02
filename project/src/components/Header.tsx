@@ -4,7 +4,7 @@ import { useTheme } from '../contexts/useTheme';
 import { useLanguage } from '../contexts/useLanguage';
 import { useActiveSection } from '../hooks';
 
-const sections = ['home', 'about', 'skills', 'projects', 'contact'] as const;
+const sections = ['home', 'about', 'projects', 'experience', 'skills', 'contact'] as const;
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
