@@ -1,73 +1,78 @@
-import React from "react";
-import { Download, ChevronDown } from "lucide-react";
-import { useLanguage } from "../contexts/LanguageContext";
+import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
+import { useLanguage } from '../contexts/useLanguage';
+import { heroStack, profile } from '../data/portfolio';
 
-const Hero: React.FC = () => {
-  const { translations, language } = useLanguage();
+const Hero = () => {
+  const { translations: t } = useLanguage();
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-8">
-        <div
-          className={`w-full md:w-1/2 ${
-            language === "ar" ? "order-1" : "order-none"
-          }`}>
-          <div className="space-y-6 max-w-xl mx-auto md:mx-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 dark:text-white">
-              {translations.hero.greeting}{" "}
-              <span className="text-teal-600 dark:text-teal-400">
-                {translations.hero.name}
-              </span>
-            </h1>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              {translations.hero.title}
-            </p>
-            <p className="text-gray-600 dark:text-gray-400">
-              {translations.hero.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a
-                href="/Mohammed_Elrokapy_FrontEnd_Developer_CV.pdf"
-                download="Mohammed_Elrokapy_FrontEnd_Developer_CV.pdf"
-                className="flex items-center justify-center gap-2 px-5 py-3 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-lg transition-colors">
-                <Download size={18} />
-                {translations.hero.download}
-              </a>
-              <a
-                href="#contact"
-                className="flex items-center justify-center gap-2 px-6 py-3 border border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 font-medium rounded-lg transition-colors dark:border-teal-400 dark:text-teal-400">
-                {translations.hero.contact}
-              </a>
-            </div>
+    <section id="home" className="mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-8 md:pb-24 md:pt-36">
+      <div className="grid items-center gap-12 md:grid-cols-[1.25fr_0.75fr] md:gap-16">
+        <div>
+          <p className="text-xl font-semibold">{t.hero.name}</p>
+          <p className="eyebrow mt-1">{t.hero.eyebrow}</p>
+          <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+            {t.hero.headline}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">{t.hero.description}</p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href="#projects" className="btn-primary">
+              {t.hero.viewProjects}
+              <ArrowDown size={16} aria-hidden="true" />
+            </a>
+            <a href={profile.cv} download className="btn-ghost">
+              <Download size={16} aria-hidden="true" />
+              {t.hero.download}
+            </a>
+            <a href="#contact" className="btn-ghost">
+              {t.hero.contact}
+            </a>
+          </div>
+
+          <div className="mt-8 flex items-center gap-3">
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`GitHub (${t.common.opensNewTab})`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded border border-line text-muted transition-colors hover:border-accent hover:text-accent">
+              <Github size={18} aria-hidden="true" />
+            </a>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`LinkedIn (${t.common.opensNewTab})`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded border border-line text-muted transition-colors hover:border-accent hover:text-accent">
+              <Linkedin size={18} aria-hidden="true" />
+            </a>
           </div>
         </div>
 
-        <div className="w-full md:w-1/2">
-          <div className="relative mx-auto w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
-            <div className="absolute inset-0 bg-teal-600 dark:bg-teal-500 rounded-full opacity-10 animate-pulse"></div>
-            <div className="absolute inset-4 bg-teal-600 dark:bg-teal-500 rounded-full opacity-20"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
-                <img
-                  src="/image (4).jpg"
-                  alt="Mohamed El-Sayed"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+        <figure className="mx-auto w-full max-w-xs md:max-w-none">
+          <div className="relative">
+            <div aria-hidden="true" className="absolute -bottom-3 -end-3 h-full w-full rounded-lg bg-accent/15" />
+            <img
+              src="/avatar.jpg"
+              alt={t.hero.photoAlt}
+              width={960}
+              height={917}
+              className="relative aspect-[4/5] w-full rounded-lg border border-line bg-surface object-cover object-[38%_30%]"
+            />
           </div>
-        </div>
+        </figure>
       </div>
 
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
-        <a
-          href="#about"
-          className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md"
-          aria-label="Scroll to About section">
-          <ChevronDown size={24} className="text-teal-600 dark:text-teal-400" />
-        </a>
+      <div className="mt-16 border-t border-line pt-6 md:mt-20">
+        <p className="eyebrow !text-muted">{t.hero.stackLabel}</p>
+        <ul className="mt-4 flex flex-wrap gap-2" dir="ltr">
+          {heroStack.map((item) => (
+            <li key={item} className="chip">
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -1,69 +1,58 @@
-# 🌐 Mohamed Elrokapy's Portfolio
+# Mohamed Elsayed Abdelmohsen, portfolio
 
-Welcome to the repository for my personal portfolio website! This project showcases my skills, experience, and the various projects I've developed as a Front-End Developer.
+Personal portfolio of Mohamed Elsayed Abdelmohsen, a full-stack developer in Giza, Egypt (React, Next.js, TypeScript, Python/FastAPI, Strapi, Linux, Plesk and DNS, currently working with FloLabs).
 
-## 🚀 Live Demo
+Live site: https://portofolio-xi-wine.vercel.app
 
-👉 [View the live site](https://portofolio-xi-wine.vercel.app)
+| Desktop, light | Mobile, dark, Arabic (RTL) |
+| --- | --- |
+| ![Desktop light](docs/screenshots/desktop-light.png) | ![Mobile dark Arabic](docs/screenshots/mobile-dark-arabic-rtl.png) |
 
-## 🛠️ Built With
+## Features
 
-- ⚛️ **React JS** – A JavaScript library for building interactive UIs.
-- 🎨 **Tailwind CSS** – A utility-first CSS framework for rapid styling.
-- 💅 **Material Tailwind** – Pre-designed components combining Tailwind and Material Design.
-- 🌐 **Vercel** – Hosting platform for automatic deployment.
-- 🧠 **TypeScript** – A typed superset of JavaScript.
-- 📦 **React Context API** – For global state management (language switching, etc).
+- Single-page site: hero, about and experience, skills, projects, contact.
+- English and Arabic, with the page direction switching to RTL. The choice is saved in `localStorage`.
+- Light and dark theme, saved in `localStorage`, applied before first paint to avoid a flash.
+- Keyboard friendly: visible focus rings, semantic landmarks, `aria-current` on the active nav item, Escape closes the mobile menu.
+- Respects `prefers-reduced-motion`.
+- Fonts (IBM Plex Sans, Mono and Sans Arabic) are self-hosted through `@fontsource`, no CDN.
+- All text lives in `project/src/i18n/translations.ts` and project/skill data in `project/src/data/portfolio.ts`, so content changes do not touch components.
 
-## 📂 Project Structure
+## Stack
 
-portofolio/
-├── public/
-├── src/
-│ ├── assets/ # Images and icons
-│ ├── components/ # Reusable UI components (About, Projects, Contact, etc.)
-│ ├── constants/ # Static data (like projectsData)
-│ ├── context/ # Language context
-│ ├── pages/ # Pages of the site
-│ ├── styles/ # Custom styling
-│ └── main.tsx # Application entry point
-├── package.json
-└── tsconfig.json
+React 18, TypeScript, Vite 5, Tailwind CSS 3, lucide-react. State is plain React context (language and theme). Hosted on Vercel.
 
-## 👤 About Me
-
-- 👨‍💻 Name: **Mohamed El-Sayed Abdelmajeed Elrokeby**
-- 📍 Location: Wardan, Giza, Egypt
-- 📧 Email: mohamedrad2022@gmail.com
-- 📞 Phone: +20 120 336 3707
-- 💼 LinkedIn: [mohamed-elrokapy](https://www.linkedin.com/in/mohamed-elrokapy/)
-- 🧑‍💻 GitHub: [mohamed-elrokapy](https://github.com/mohamed-elrokapy)
-
-## 🧠 Skills
-
-- React JS
-- Tailwind CSS
-- TypeScript / JavaScript
-- HTML & CSS
-- Material UI / Material Tailwind
-- Responsive Design
-- REST APIs (e.g. TheMovieDB)
-- Git & GitHub
-
-## 🎯 Features
-
-- Bilingual support (English / Arabic) with Context API
-- Smooth animations with Framer Motion
-- Clean, responsive design across devices
-- Dynamic project showcase with GitHub & Live links
-
-## ▶️ Getting Started Locally
-
-To run the project locally:
+## Run locally
 
 ```bash
-git clone https://github.com/mohamed-elrokapy/portofolio.git
-cd portofolio
 cd project
-npm install
-npm run dev
+npm ci
+npm run dev        # http://localhost:5201
+npm run lint
+npm run typecheck
+npm run build      # output in project/dist
+npm run preview    # serves the build on port 5201
+```
+
+No environment variables are needed.
+
+## CI
+
+`.github/workflows/ci.yml` runs `npm ci`, lint, typecheck and build in `project/` on every push and pull request.
+
+## Content notes
+
+- Project descriptions were rewritten to say only what could be confirmed from each repository (its dependencies, folders and README). Earlier claims that could not be confirmed, such as "secure authentication", "real-time health data tracking" and "interactive maps", were removed.
+- The old contact form only simulated sending and never delivered anything, so it was replaced by direct contact links.
+- Stock photos that had been used as project thumbnails were removed because they were not screenshots of the projects.
+- Experience entries come from the CV in `project/public/`, which is unchanged.
+
+## Verification and limitations
+
+Verified by running `npm run lint`, `npm run typecheck` and `npm run build` (all pass), and by driving the dev server with Playwright at 1280x800 and 390x844 in light, dark, English and Arabic (no console errors, no horizontal overflow, language and theme toggles and the mobile menu work, choices persist after reload).
+
+Not verified: the external project links (live demos and GitHub repositories) were not opened from the build environment, because outside network access was blocked. The e-commerce Strapi demo may depend on a separately hosted Strapi backend. The `dns-email-health-checker` project has no hosted demo, so it links only to its source. Automated tests were not added, since the site has no non-trivial logic.
+
+## Notes
+
+UI and code quality improvements were made with AI assistance (Claude, Anthropic), reviewed and verified by building and running the app.

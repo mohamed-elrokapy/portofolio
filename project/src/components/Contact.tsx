@@ -1,280 +1,65 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { Github, Linkedin, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { useLanguage } from '../contexts/useLanguage';
+import { profile } from '../data/portfolio';
 
-const Contact: React.FC = () => {
-  const { translations, language } = useLanguage();
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState<{
-    type: 'success' | 'error' | 'validation' | null;
-    message: string;
-  }>({ type: null, message: '' });
-  const [isSending, setIsSending] = useState(false);
+interface Row {
+  icon: ReactNode;
+  label: string;
+  text: string;
+  href?: string;
+  external?: boolean;
+}
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
-  };
+const Contact = () => {
+  const { translations: t } = useLanguage();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate form
-    if (!formState.name || !formState.email || !formState.message) {
-      setStatus({
-        type: 'validation',
-        message: translations.contact.formError
-      });
-      return;
-    }
-    
-    // Normally would send to a server, but for demo we'll simulate
-    setIsSending(true);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Success
-      setStatus({
-        type: 'success',
-        message: translations.contact.messageSent
-      });
-      
-      // Reset form
-      setFormState({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
-    } catch (error) {
-      setStatus({
-        type: 'error',
-        message: translations.contact.messageError
-      });
-    } finally {
-      setIsSending(false);
-      
-      // Clear status after 5 seconds
-      setTimeout(() => {
-        setStatus({ type: null, message: '' });
-      }, 5000);
-    }
-  };
+  const rows: Row[] = [
+    { icon: <Phone size={18} />, label: t.contact.phone, text: profile.phone, href: profile.phoneHref },
+    { icon: <MessageCircle size={18} />, label: t.contact.whatsapp, text: profile.phone, href: profile.whatsapp, external: true },
+    { icon: <Linkedin size={18} />, label: t.contact.linkedin, text: 'mohamed-elrokapy', href: profile.linkedin, external: true },
+    { icon: <Github size={18} />, label: t.contact.github, text: 'mohamed-elrokapy', href: profile.github, external: true },
+    { icon: <MapPin size={18} />, label: t.contact.location, text: t.contact.locationValue },
+  ];
 
   return (
-    <section id="contact" className="py-16 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
-          {translations.contact.title}
-        </h2>
-        
-        <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
-          {translations.contact.subtitle}
-        </p>
-        
-        <div className={`flex flex-col md:flex-row gap-10 max-w-6xl mx-auto ${language === 'ar' ? 'md:flex-row-reverse' : ''}`}>
-          <div className="md:w-1/2">
-            <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
-              {status.type && (
-                <div 
-                  className={`p-4 mb-6 rounded-lg ${
-                    status.type === 'success' 
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' 
-                      : status.type === 'error' 
-                        ? 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
-                        : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
-                  }`}
-                >
-                  {status.message}
-                </div>
+    <section id="contact" className="border-t border-line bg-surface/50">
+      <div className="section">
+        <p className="eyebrow">04</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{t.contact.title}</h2>
+        <p className="mt-4 text-xl font-medium">{t.contact.lead}</p>
+        <p className="mt-2 max-w-2xl text-lg text-muted">{t.contact.sub}</p>
+
+        <a
+          href={`mailto:${profile.email}`}
+          className="mt-8 inline-flex max-w-full items-center gap-3 break-all rounded border border-accent px-5 py-4 text-lg font-semibold text-accent transition-colors hover:bg-accent hover:text-accent-fg sm:text-2xl"
+          dir="ltr">
+          <Mail size={22} aria-hidden="true" className="shrink-0" />
+          {profile.email}
+        </a>
+
+        <ul className="mt-12 divide-y divide-line border-y border-line">
+          {rows.map((row) => (
+            <li key={row.label} className="flex items-center gap-4 py-4">
+              <span className="text-accent" aria-hidden="true">
+                {row.icon}
+              </span>
+              <span className="w-28 shrink-0 text-sm text-muted">{row.label}</span>
+              {row.href ? (
+                <a
+                  href={row.href}
+                  {...(row.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="min-w-0 break-words font-medium underline-offset-4 hover:text-accent hover:underline"
+                  dir="ltr">
+                  {row.text}
+                  {row.external && <span className="sr-only"> ({t.common.opensNewTab})</span>}
+                </a>
+              ) : (
+                <span className="font-medium">{row.text}</span>
               )}
-              
-              <div className="mb-6">
-                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {translations.contact.name}
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formState.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  required
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {translations.contact.email}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  required
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {translations.contact.message}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formState.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none"
-                  rows={5}
-                  required
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSending}
-                className={`w-full flex items-center justify-center gap-2 px-6 py-3 ${
-                  isSending 
-                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed' 
-                    : 'bg-teal-600 hover:bg-teal-700 dark:bg-teal-600 dark:hover:bg-teal-700'
-                } text-white font-medium rounded-lg transition-colors`}
-              >
-                {isSending ? (
-                  <>
-                    <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    {translations.contact.send}
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
-          
-          <div className="md:w-1/2">
-            <div className="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md h-full">
-              <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
-                {translations.contact.directContact}
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-teal-100 dark:bg-teal-900/40 rounded-lg text-teal-600 dark:text-teal-400">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">
-                      {translations.contact.emailMe}
-                    </h4>
-                    <a 
-                      href="mailto:mohamedrad2022@gmail.com" 
-                      className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                    >
-                      mohamedrad2022@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-teal-100 dark:bg-teal-900/40 rounded-lg text-teal-600 dark:text-teal-400">
-                    <Phone size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">
-                      {translations.contact.callMe}
-                    </h4>
-                    <a 
-                      href="tel:+201203363707" 
-                      className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                    >
-                      +20 1208207545
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-teal-100 dark:bg-teal-900/40 rounded-lg text-teal-600 dark:text-teal-400">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">
-                      {translations.contact.location}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Wardan Station, Giza, Egypt
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <h4 className="font-medium text-gray-900 dark:text-white mb-3">
-                  {translations.contact.socialProfiles}
-                </h4>
-                
-                <div className="flex gap-3">
-                  <a 
-                    href="https://www.linkedin.com/in/mohamed-elrokapy/"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-3 bg-gray-200 dark:bg-gray-600 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-full text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                    aria-label="LinkedIn Profile"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  
-                  <a 
-                    href="https://github.com/mohamed-elrokapy"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-3 bg-gray-200 dark:bg-gray-600 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-full text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                    aria-label="GitHub Profile"
-                  >
-                    <Github size={20} />
-                  </a>
-                  
-                  <a 
-                    href="https://wa.me/201203363707"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-3 bg-gray-200 dark:bg-gray-600 hover:bg-teal-100 dark:hover:bg-teal-900/40 rounded-full text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
-                    aria-label="WhatsApp"
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="20" 
-                      height="20" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      className="lucide lucide-message-circle"
-                    >
-                      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

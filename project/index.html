@@ -1,10 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dev_mohamed_elrokapy</title>
+    <title>Mohamed Elsayed Abdelmohsen | Full-stack developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Mohamed Elsayed Abdelmohsen, a full-stack developer in Giza, Egypt. React, Next.js, TypeScript, Python/FastAPI, Strapi and Linux hosting."
+    />
+    <meta property="og:title" content="Mohamed Elsayed Abdelmohsen | Full-stack developer" />
+    <meta property="og:type" content="website" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Apply saved theme and language before first paint to avoid a flash.
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+          var l = localStorage.getItem('language');
+          if (l === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

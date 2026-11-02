@@ -1,102 +1,113 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, Languages } from "lucide-react";
-import { useTheme } from "../contexts/ThemeContext";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useEffect, useState } from 'react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
+import { useTheme } from '../contexts/useTheme';
+import { useLanguage } from '../contexts/useLanguage';
+import { useActiveSection } from '../hooks';
 
-const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const sections = ['home', 'about', 'skills', 'projects', 'contact'] as const;
+
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { language, toggleLanguage, translations } = useLanguage();
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const { toggleLanguage, translations: t } = useLanguage();
+  const active = useActiveSection(sections);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
+  const iconButton =
+    'inline-flex h-10 w-10 items-center justify-center rounded border border-line text-ink transition-colors hover:border-accent hover:text-accent';
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${
+        scrolled || menuOpen ? 'border-line bg-bg/90 backdrop-blur' : 'border-transparent'
       }`}>
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-          <span className="text-teal-600 dark:text-teal-400">Mohamed</span>{" "}
-          El-Sayed
-        </h1>
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
+        <a href="#home" className="flex items-center gap-2 font-semibold tracking-tight" dir="ltr">
+          <span className="grid h-8 w-8 place-items-center rounded bg-accent font-mono text-xs font-medium text-accent-fg">
+            ME
+          </span>
+          <span className="hidden sm:inline">Mohamed Elsayed</span>
+        </a>
 
-        <div className="flex items-center gap-4">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }>
-            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+        <nav aria-label={t.nav.label} className="hidden md:block">
+          <ul className="flex items-center gap-1">
+            {sections.map((id) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  aria-current={active === id ? 'true' : undefined}
+                  className={`rounded px-3 py-2 text-sm transition-colors hover:text-accent ${
+                    active === id ? 'font-semibold text-accent' : 'text-muted'
+                  }`}>
+                  {t.nav[id]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
+        <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={toggleLanguage}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label={
-              language === "en" ? "Switch to Arabic" : "Switch to English"
-            }>
-            <Languages size={20} />
+            className="inline-flex h-10 items-center justify-center rounded border border-line px-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+            aria-label={t.nav.switchLanguageLabel}
+            lang={t.nav.switchLanguage === 'English' ? 'en' : 'ar'}>
+            {t.nav.switchLanguage}
           </button>
-
-          <nav className="hidden md:block">
-            <ul className="flex space-x-6">
-              {["home", "about", "skills", "projects", "contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item}`}
-                      className="text-gray-700 hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 transition-colors">
-                      {translations.nav[item]}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
-
           <button
-            className="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            type="button"
+            onClick={toggleTheme}
+            className={iconButton}
+            aria-label={theme === 'dark' ? t.nav.toLight : t.nav.toDark}>
+            {theme === 'dark' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+          </button>
+          <button
+            type="button"
+            className={`${iconButton} md:hidden`}
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}>
+            {menuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg">
-          <nav className="container mx-auto px-4 py-4">
-            <ul className="space-y-4">
-              {["home", "about", "skills", "projects", "contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item}`}
-                      className="block py-2 text-gray-700 hover:text-teal-600 dark:text-gray-300 dark:hover:text-teal-400 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}>
-                      {translations.nav[item]}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
-        </div>
+      {menuOpen && (
+        <nav id="mobile-nav" aria-label={t.nav.label} className="border-t border-line bg-bg md:hidden">
+          <ul className="mx-auto max-w-6xl px-5 py-2 sm:px-8">
+            {sections.map((id) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active === id ? 'true' : undefined}
+                  className={`block border-b border-line/60 py-3 text-base last:border-b-0 ${
+                    active === id ? 'font-semibold text-accent' : 'text-ink'
+                  }`}>
+                  {t.nav[id]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
     </header>
   );
