@@ -1,119 +1,34 @@
+import { useLanguage } from '../contexts/useLanguage';
+import { skillGroups } from '../data/portfolio';
 
-import React from "react";
-import { Code, Palette, GitBranch } from "lucide-react";
-import { useLanguage } from "../contexts/LanguageContext";
+const order = ['frontend', 'backend', 'ops', 'tooling'] as const;
 
-const Skills: React.FC = () => {
-  const { translations } = useLanguage();
-
-  const skillCategories = [
-    {
-      id: "frontend",
-      icon: <Code size={24} />,
-      title: translations.skills.frontend,
-      skills: [
-        { name: "HTML5" },
-        { name: "CSS3" },
-        { name: "JavaScript" },
-        { name: "React" },
-        
-        { name: "Next.js" },
-      ],
-    },
-    {
-      id: "design",
-      icon: <Palette size={24} />,
-      title: translations.skills.design,
-      skills: [
-  { name: "Responsive Design" },
-  { name: "UI/UX Basics" },
-  { name: "CSS Animations" },
-  { name: "Tailwind CSS" },
-  { name: "Bootstrap" },
-  { name: "Framer Motion" },
-  { name: "Material Tailwind" },
-  { name: "ShadCN UI" }
-]
-    },
-    {
-      id: "tools",
-      icon: <GitBranch size={24} />,
-      title: translations.skills.tools,
-      skills: [
-  { name: "Git/GitHub" },
-  { name: "GitHub Actions" },
-  { name: "CI/CD Principles" },
-  { name: "Postman" },
-  { name: "VS Code" },
-  { name: "Jest" },
-  { name: "Redux Toolkit" },
-  { name: "React Testing Library" }
-]    },
-  ];
+const Skills = () => {
+  const { translations: t } = useLanguage();
 
   return (
-    <section id="skills" className="py-16 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-          {translations.skills.title}
-        </h2>
+    <section id="skills" className="border-t border-line bg-surface/50">
+      <div className="section">
+        <p className="eyebrow">02</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{t.skills.title}</h2>
+        <p className="mt-4 max-w-2xl text-lg text-muted">{t.skills.intro}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {skillCategories.map((category) => (
-            <div
-              key={category.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-teal-100 dark:bg-teal-900/40 rounded-lg text-teal-600 dark:text-teal-400">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                </div>
-
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  {category.skills.map((skill) => (
-                    <li key={skill.name} className="font-medium">
-                      {skill.name}
+        <dl className="mt-10 divide-y divide-line border-y border-line">
+          {order.map((key) => (
+            <div key={key} className="grid gap-3 py-6 md:grid-cols-[14rem_1fr] md:gap-10">
+              <dt className="font-semibold">{t.skills.groups[key]}</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-2" dir="ltr">
+                  {skillGroups[key].map((skill) => (
+                    <li key={skill} className="chip !text-ink">
+                      {skill}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </dd>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
-          <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
-            {translations.skills.keySkills}
-          </h3>
-
-          <div className="flex flex-wrap gap-3">
-            {[
-              "HTML5",
-              "CSS3",
-              "JavaScript",
-              "React",
-              "Tailwind CSS",
-              "Next.js",
-              "Responsive Design",
-              "Git",
-              "GitHub",
-              "Postman",
-              "ES6+",
-              "Component Design",
-              "Vercel Deployment",
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-teal-50 hover:text-teal-600 dark:hover:bg-teal-900/20 dark:hover:text-teal-400 transition-colors">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+        </dl>
       </div>
     </section>
   );
