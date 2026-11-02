@@ -47,7 +47,7 @@ export const en = {
     present: 'Present',
     jobs: {
       flolabs: {
-        role: 'Web and hosting contributor',
+        role: 'Technical Operations Associate',
         place: 'FloLabs',
         desc: 'Work on websites, Strapi content backends, and hosting and DNS administration with Plesk.',
       },
@@ -214,7 +214,7 @@ export const ar: Translations = {
     present: 'الحاضر',
     jobs: {
       flolabs: {
-        role: 'مساهم في الويب والاستضافة',
+        role: 'مساعد عمليات تقنية',
         place: 'FloLabs',
         desc: 'العمل على مواقع الويب وأنظمة المحتوى Strapi وإدارة الاستضافة وDNS عبر Plesk.',
       },
